@@ -23,6 +23,7 @@ local function sort()
 end
 
 local function harvest()
+	turtle.forward()
 	inspected, data = turtle.inspectDown()
 
 	if inspected and data.name == "minecraft:wheat" and data.state["age"] == 7 then
@@ -45,14 +46,12 @@ end
 
 local function simplefarm()
 	turtle.up()
-	turtle.forward()
 
 	for i = 1, 5 do
 		harvest()
-		turtle.forward()
 	end
 
-	for i = 1, 6 do
+	for i = 1, 5 do
 		turtle.back()
 	end
 
