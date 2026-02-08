@@ -17,7 +17,7 @@ local function sort()
 		elseif item ~= nil and item.name == "minecraft:beetroot" then
 			turtle.transferTo(15)
 		end
-	until slot >= 16
+	until slot == 16
 
 	turtle.select(1)
 end
@@ -44,18 +44,18 @@ local function harvest()
 	end
 end
 
-local function simplefarm()
+local function simplefarm(length)
 	turtle.up()
 
-	for i = 1, 5 do
+	for i = 1, length do
 		harvest()
 	end
 
-	for i = 1, 5 do
+	for i = 1, length do
 		turtle.back()
 	end
 
 	turtle.down()
 end
 
-simplefarm()
+simplefarm(5)
