@@ -44,18 +44,18 @@ local function harvest()
 	end
 end
 
-local function simplefarm(length)
+local function simplefarm()
 	turtle.up()
 
-	for i = 1, length do
+	for i = 1, 10 do
 		harvest()
 	end
 
-	for i = 1, length do
+	for i = 1, 10 do
 		turtle.back()
 	end
 
 	turtle.down()
 end
 
-simplefarm(5)
+simplefarm()
