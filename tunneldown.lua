@@ -22,8 +22,6 @@ local function tunneldown()
 	for i = 1, levelsMined do
 		turtle.up()
 	end
-
-	turtle.up()
 end
 
 tunneldown()
