@@ -33,7 +33,6 @@ local function tunneldown()
 
 		turtle.up()
 end
-	end
 end
 
 tunneldown()
