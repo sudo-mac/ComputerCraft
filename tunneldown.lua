@@ -1,4 +1,4 @@
-local levelsMined = 0
+ local levelsMined = 0
 
 local function resurface()
 	for i = 1, levelsMined do
@@ -29,12 +29,10 @@ local function tunneldown()
 			print(levelsMined .. " levels mined.")
 
 			
-			for i = 
-		end
+			for i = levelsMined do
 
-		levelsMined = levelsMined + 1
-
-		turtle.dig()
+		turtle.up()
+end
 	end
 end
 
