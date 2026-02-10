@@ -1,14 +1,6 @@
- local levelsMined = 0
-
-local function resurface()
-	for i = 1, levelsMined do
-		turtle.up()
-	end
-end
-
 local function tunneldown()
- levelsMined = 0
-  sucess, data = turtle.inspectDown()
+	levelsMined = 0
+	success, data = turtle.inspectDown()
 
 	term.clear()
 	term.setCursorPos(1, 1)
@@ -17,22 +9,21 @@ local function tunneldown()
 	repeat
 		turtle.digDown()
 		turtle.down()
-  turtle.dig()
-  levelsMined = levelsMined + 1
-  success, data = turtle.inspectDown()
-		until success and data.name == "minecraft:bedrock"
-			
+		turtle.dig()
+		levelsMined = levelsMined + 1
+		success, data = turtle.inspectDown()
+	until success and data.name == "minecraft:bedrock"
 
-  print()
-			print("Bedrock Reached! Returning to surface.")
-			print()
-			print(levelsMined .. " levels mined.")
+	print()
+	print("Bedrock Reached! Returning to surface.")
+	print()
+	print(levelsMined .. " levels mined.")
 
-			
-			for i = levelsMined do
-
+	for i = 1, levelsMined do
 		turtle.up()
-end
+	end
+
+	turtle.up()
 end
 
 tunneldown()
