@@ -1,3 +1,5 @@
+blocksMoved = 0
+
 local function sort()
 	slot = 0
 
@@ -25,44 +27,44 @@ end
 local function simplefarm()
 	turtle.up()
 	turtle.forward()
-
+	blocksMoved = blocksMoved + 1
 	inspected, data = turtle.inspectDown()
 
-	if inspected and not data.name:match("fence") then
-		if data.name == "minecraft:wheat" and not data.state["age"] == 7 then
-			if data.stage["age"] == 7 then
-				turtle.digDown()
-				sort()
-				turtle.select(1)
-				turtle.placeDown()
-			else
-				turtle.forward()
-			end
-		elseif data.name == "minecraft:beetroots" and not data.state["age"] == 3 then
-			if data.state["age"] == 3 then
-				turtle.digDown()
-				sort()
-				turtle.select(1)
-				turtle.placeDown()
-			else
-				turtle.forward()
-			end
-		elseif data.name == "minecraft:potatoes" and not data.state["age"] == 7 then
-			if data.state["age"] == 7 then
-				turtle.digDown()
-				sort()
-				turtle.select(1)
-				turtle.placeDown()
-			else
-				turtle.forward()
-			end
-		end
-	else
-		turtle.forward()
-	end
+	while inspected and not data.name:match("fence") do
+		inspected, data = turtle.inspectDown()
 
-	for i = 1, 11 do
-		turtle.back()
+		if inspected and not data.name:match("fence") then
+			if data.name == "minecraft:wheat" then
+				if data.state["age"] == 7 then
+					turtle.digDown()
+					sort()
+					turtle.select(1)
+					turtle.placeDown()
+				end
+			elseif data.name == "minecraft:beetroots" then
+				if data.state["age"] == 3 then
+					turtle.digDown()
+					sort()
+					turtle.select(2)
+					turtle.placeDown()
+				end
+			elseif data.name == "minecraft:potatoes" then
+				if data.state["age"] == 7 then
+					turtle.digDown()
+					sort()
+					turtle.select(14)
+					turtle.placeDown()
+				end
+			end
+		else
+			for i = 1, blocksMoved do
+				turtle.back()
+			end
+			turtle.down()
+		end
+
+		turtle.forward()
+		blocksMoved = blocksMoved + 1
 	end
 end
 
